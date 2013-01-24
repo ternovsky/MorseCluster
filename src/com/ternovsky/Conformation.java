@@ -56,7 +56,7 @@ public class Conformation {
         builder.append(parameter);
         builder.append("\n");
 
-        String format = "%+.14f";
+        String format = "%+.15f";
         for (Particle particle : particles) {
             builder.append(String.format(format, particle.x));
             builder.append("\t");
