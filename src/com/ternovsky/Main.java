@@ -27,25 +27,10 @@ public class Main {
             particles.add(new Particle(x, y, z));
         }
 
-        System.out.println(getEnergy(particles));
-    }
-
-    public static double getEnergy(List<Particle> particles) {
-        double energy = 0;
-        for (int i = 0; i < particles.size(); i++) {
-            for (int j = i + 1; j < particles.size(); j++) {
-                double r = getDistance(particles.get(i), particles.get(j));
-                energy += Math.pow(Math.E, PARAM * (1 - r)) * (Math.pow(Math.E, PARAM * (1 - r)) - 2);
-            }
-        }
-
-        return energy;
-    }
-
-    public static double getDistance(Particle particle1, Particle particle2) {
-        double dx2 = Math.pow(particle1.x - particle2.x, 2);
-        double dy2 = Math.pow(particle1.y - particle2.y, 2);
-        double dz2 = Math.pow(particle1.z - particle2.z, 2);
-        return Math.pow(dx2 + dy2 + dz2, 0.5);
+        Conformation conformation = new Conformation();
+        conformation.setParameter(PARAM);
+        conformation.setParticles(particles);
+        conformation.getEnergy();
+        System.out.print(conformation.toString());
     }
 }
